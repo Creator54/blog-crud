@@ -34,6 +34,9 @@ app.get("/contact-info",(req,res)=>{
     res.render("contact-info")
 })
 
+app.get("/about-me",(req,res)=>{
+    res.render("about-me")
+})
 
 app.listen(port,()=>{
     console.log(`connection is live at port no. ${port}`);
