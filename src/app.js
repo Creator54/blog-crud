@@ -6,6 +6,7 @@ const hbs = require("hbs");
 const port = process.env.PORT || 8000;
 require("./db/conn");
 const User = require("./models/users");
+const Post = require("./models/post");
 const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views");
 const partials_path = path.join(__dirname, "../templates/partials");
@@ -31,9 +32,29 @@ app.get("/", (req, res) => {
 app.get("/create-post", (req, res) => {
   res.render("create-post")
 })
+app.post("/post",async(req,res)=>{
+  try{
+      // res.send(req.body)
+      const postData=new Post(req.body);
+      await postData.save();
+      res.status(201).render("index");
+  }catch(e){
+      res.status(500).send(e);
+  }
+})
 
 app.get("/contact-info", (req, res) => {
   res.render("contact-info")
+})
+app.post("/contact",async(req,res)=>{
+  try{
+      // res.send(req.body)
+      const userData=new User(req.body);
+      await userData.save();
+      res.status(201).render("index");
+  }catch(e){
+      res.status(500).send(e);
+  }
 })
 
 app.get("/about-me", (req, res) => {

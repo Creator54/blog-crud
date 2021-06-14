@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // creating db
-mongoose.connect("mongodb://localhost:27017/dynamic", {
+mongoose.connect("mongodb://localhost:27017/blog-crud", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,

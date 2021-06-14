@@ -17,14 +17,20 @@ const userSchema = mongoose.Schema({
       }
     }
   },
-  password: {
+  institute: {
     type: String,
     required: true
+  },
+  contact: {
+    type: Number,
+    required: true,
+    minlength:10,
+    maxlength:12
   },
   message: {
     type: String,
     required: true,
-    minlength: 3
+    minlength: 10
   },
   date: {
     type: Date,
