@@ -26,6 +26,10 @@ app.get("/",(req,res)=>{
     res.render("index")
 })
 
+app.get("/create-post",(req,res)=>{
+    res.render("create-post")
+})
+
 app.post("/contact",async(req,res)=>{
     try{
         // res.send(req.body)
