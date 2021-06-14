@@ -30,15 +30,8 @@ app.get("/create-post",(req,res)=>{
     res.render("create-post")
 })
 
-app.post("/contact",async(req,res)=>{
-    try{
-        // res.send(req.body)
-        const userData=new User(req.body);
-        await userData.save();
-        res.status(201).render("index");
-    }catch(e){
-        res.status(500).send(e);
-    }
+app.get("/contact-info",(req,res)=>{
+    res.render("contact-info")
 })
 
 
