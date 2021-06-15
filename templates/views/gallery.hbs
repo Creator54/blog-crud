@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,23 +12,26 @@
 
 <body>
   {{>navbar}}
-{{#each entries}}
-      <div class="card">
-  <div class="card-header">
-    {{postname}}
-  </div>
-  <div class="card-body">
-    <p class="card-text">Content:{{content}}</p>
-    <p class="card-text">Conclusion:{{conclusion}}</p>
-    <p class="card-text">Category:{{category}}</p>
-  </div>
-  <div class="card-footer">
-    <a href="#" class="btn btn-warning btn-lg">Edit</a>
-    <a href="#" class="btn btn-danger btn-lg">Delete</a>
-  </div>
-</div>
-{{/each}}
-<script src="../jq/jquery.js" type="text/javascript"></script>
+  {{#each entries}}
+    <div class="card">
+      <div class="card-header">
+        <h1><b>{{postname}}</b></h1>
+      </div>
+      <div class="card-body">
+        <h3><b>Content:</b></h3>
+        <h3>{{content}}</h3>
+        <h3><b>Conclusion:</b></h3>
+        <h3>{{conclusion}}</h3>
+        <h3><b>Category:</b></h3>
+        <h3>{{category}}</h3>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-warning btn-lg">Edit</a>
+        <a href="#" class="btn btn-danger btn-lg">Delete</a>
+      </div>
+    </div>
+  {{/each}}
+  <script src="../jq/jquery.js" type="text/javascript"></script>
   <script src="../js/bootstrap.js" type="text/javascript"></script>
 
 </body>

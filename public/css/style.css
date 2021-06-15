@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 
 * {
-  font-family: "Poiret One", cursive;
+  font-family: "Source Code Pro", normal;
   font-weight: bold;
 }
 
@@ -271,7 +271,9 @@ footer p {
   label {
     font-size: 1.5rem;
   }
-
+  .card-body{
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg');;
+  }
   .about-style .sub-heading,
   .service-style .sub-heading,
   .contact-style .sub-heading {
