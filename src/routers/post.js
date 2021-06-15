@@ -6,8 +6,8 @@ const Post=require("../models/post");
 router.post("/create-post",async(req,res)=>{
     try{
         const addingPostRecords=new Post(req.body)
-        // console.log(req.body);
-        const insertPost=await addingPostRecords.save();
+        console.log(req.body);
+        await addingPostRecords.save();
         res.status(201).render('index');
     }catch(e){
         res.status(400).send(e);
@@ -19,6 +19,7 @@ router.get("/post",async(req,res)=>{
         const getPost=await Post.find({});
         // console.log(getPost[0])
         res.render('gallery',{entries:getPost});
+        // res.send(getPost)
     }catch(e){
         res.status(400).send(e);
     }
@@ -28,13 +29,14 @@ router.get("/post/:id",async(req,res)=>{
     try{
         const _id=req.params.id;
         const getPost=await Post.findById(_id);
-        res.send(getPost);
+        res.render('gallery',{entries:getPost});
+        // res.send(getPost)
     }catch(e){
         res.status(400).send(e);
     }
 })
 
-router.patch("/post/:id",async(req,res)=>{
+router.patch("/edit/:id",async(req,res)=>{
     try{
         const _id=req.params.id;
         const getPost=await Post.findByIdAndUpdate(_id,req.body,{new:true});
@@ -44,10 +46,10 @@ router.patch("/post/:id",async(req,res)=>{
     }
 })
 
-router.delete("/post/:id",async(req,res)=>{
+router.delete("/delete/:id",async(req,res)=>{
     try{
-        const getPost=await Post.findByIdAndDelete(req.params.id);
-        res.send(getPost);
+        const getMen=await Post.findByIdAndDelete(req.params.id);
+        res.send(getMen);
     }catch(e){
         res.status(500).send(e);
     }

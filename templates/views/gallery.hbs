@@ -16,22 +16,40 @@
 {{#each entries}}
       <div class="card">
   <div class="card-header">
-    {{postname}}
+    {{this.postname}}
   </div>
   <div class="card-body">
-    <p class="card-text">Content:{{content}}</p>
-    <p class="card-text">Conclusion:{{conclusion}}</p>
-    <p class="card-text">Category:{{category}}</p>
+    <p class="card-text">Content:{{this.content}}</p>
+    <p class="card-text">Conclusion:{{this.conclusion}}</p>
+    <p class="card-text">Category:{{this.category}}</p>
   </div>
   <div class="card-footer">
-    <a href="#" class="btn btn-warning btn-lg">Edit</a>
-    <a href="#" class="btn btn-danger btn-lg">Delete</a>
+    <a href="/edit/{{this._id}}" class="btn btn-warning btn-lg">Edit</a>
+    {{!-- <a href="/delete/{{this._id}}" method="DELETE"class="btn btn-danger btn-lg" onclick="return confirm('Are you sure to delete this record ?');">Delete</a> --}}
+    <form action='/delete/{{this._id}}' method="POST">
+      <input id="id" type="text" name="id" /><br />
+      <button id:"cancella" type="submit">Submit</button>
+    </form>
   </div>
 </div>
 {{/each}}
 <script src="../jq/jquery.js" type="text/javascript"></script>
   <script src="../js/bootstrap.js" type="text/javascript"></script>
-
+<script>
+  $(document).ready(function() {
+ $('#cancella').on("click", function() {
+  var id = $('#id').val();
+  $.ajax({
+   url: '/delete/:id',
+   type: 'DELETE',
+   data: {"id": id},
+   dataType: 'json',
+   success: function(data) {
+    //do something
+  }});
+ });
+});
+</script>
 </body>
 
 </html>

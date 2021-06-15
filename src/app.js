@@ -33,10 +33,17 @@ app.use(router);
 app.get("/", (req, res) => {
   res.render("index")
 })
-app.get("/post", (req, res) => {
-  res.render("index")
-})
-
+app.delete('/delete/:id', (req, res) => {
+  let id = req.params.id;
+  if (!ObjectID.isValid(id)) {
+    return res.status(400).send();
+  }
+  Post.findByIdAndRemove(id).then((docs) => {
+    res.status(200).send({docs})
+  }).catch((e) => {
+    res.status(400)
+  });
+});
 
 app.get("/create-post", (req, res) => {
   res.render("create-post")

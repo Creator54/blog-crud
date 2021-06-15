@@ -15,8 +15,3 @@ mongoose.connect("mongodb://localhost:27017/blog-crud", {
   }).catch((e) => {
     console.log("No connection");
   })
-
-  // User.find({},function(err,users){
-  //   if(err)console.log(err);
-  //   console.log(users)
-  // })
