@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const hbs = require("hbs");
-// const jwt=require("jsonwebtoken");
+
 const port = process.env.PORT || 8000;
 require("./db/conn");
 const User = require("./models/users");
@@ -10,6 +10,9 @@ const Post = require("./models/post");
 const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views");
 const partials_path = path.join(__dirname, "../templates/partials");
+var bodyParser=require("body-parser");
+var expressHbs = require('express-handlebars');
+const router = require("./routers/post");
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -23,24 +26,20 @@ app.use('/js', express.static(path.join(__dirname, "../node_modules/bootstrap/di
 app.use('/jq', express.static(path.join(__dirname, "../node_modules/jquery/dist")));
 
 app.use(express.static(static_path));
+// app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set("view engine", "hbs");
+app.use(router);
 
 app.get("/", (req, res) => {
   res.render("index")
 })
+app.get("/post", (req, res) => {
+  res.render("index")
+})
+
 
 app.get("/create-post", (req, res) => {
   res.render("create-post")
-})
-app.post("/post",async(req,res)=>{
-  try{
-      // res.send(req.body)
-      const postData=new Post(req.body);
-      await postData.save();
-      res.status(201).render("index");
-  }catch(e){
-      res.status(500).send(e);
-  }
 })
 
 app.get("/contact-info", (req, res) => {
