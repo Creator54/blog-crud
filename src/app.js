@@ -39,7 +39,7 @@ app.get("/post", (req, res) => {
 
 
 app.get("/create-post", (req, res) => {
-  res.render("create-post")
+  res.render("create-post",{action:null})
 })
 
 app.get("/contact-info", (req, res) => {

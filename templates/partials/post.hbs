@@ -3,22 +3,22 @@
     <div class="col-md-6 col-12 mx-auto">
       <h1 class="text-center main-heading">Create New</h1>
       <div class="row">
-        <form action="/create-post" method="POST" class="form">
+        <form action="/create-post{{action}}" method="POST" class="form">
           <div class="form-group">
             <label for="postname" class="form-label"> Title</label>
-            <input type="name" class="form-control" id="postname" placeholder="give some title" name="postname">
+            <input type="name" class="form-control" id="postname" value="{{d.postname}}" placeholder="give some title" name="postname">
           </div>
           <div class="form-group">
             <label for="content" class="form-label">Content</label>
-            <textarea class="form-control" id="textarea" placeholder="your content goes here" rows="5" name="content"></textarea>
+            <textarea class="form-control" id="textarea" value="{{d.content}}" placeholder="your content goes here" rows="5" name="content"></textarea>
           </div>
           <div class="form-group">
             <label for="category" class="form-label">Conclusion</label>
-            <input type="text" class="form-control" id="conclusion" placeholder="share some conclusion" name="conclusion">
+            <input type="text" class="form-control" id="conclusion" value="{{d.conclusion}}" placeholder="share some conclusion" name="conclusion">
           </div>
           <div class="form-group">
             <label for="category" class="form-label">Category</label>
-            <input type="text" class="form-control" id="category" placeholder="specify category" name="category">
+            <input type="text" class="form-control" id="category" value="{{d.category}}" placeholder="specify category" name="category">
           </div>
           <button type="post" class="btn btn-primary btn-lg mt-3"><a>Post</a></button>
         </form>

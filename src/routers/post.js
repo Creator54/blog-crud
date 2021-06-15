@@ -28,17 +28,19 @@ router.get("/post/:id",async(req,res)=>{
     try{
         const _id=req.params.id;
         const getPost=await Post.findById(_id);
-        res.send(getPost);
+        res.render('create-post',{d:getPost,action:"/"+_id});
+        // res.send(getPost);
     }catch(e){
         res.status(400).send(e);
     }
 })
 
-router.get("/edit/:id",async(req,res)=>{
+router.post("/create-post/:id",async(req,res)=>{
     try{
         const _id=req.params.id;
         const getPost=await Post.findByIdAndUpdate(_id,req.body,{new:true});
-        res.send(getPost);
+        res.render('gallery');
+        // res.send(getPost);
     }catch(e){
         res.status(500).send(e);
     }
@@ -47,7 +49,7 @@ router.get("/edit/:id",async(req,res)=>{
 router.get("/delete/:id",async(req,res)=>{
     try{
         await Post.findByIdAndDelete(req.params.id);
-        res.render('gallery')
+        res.status(201).render("index");
         // res.send(getPost);
     }catch(e){
         res.status(500).send(e);
