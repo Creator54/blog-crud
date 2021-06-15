@@ -28,6 +28,15 @@ h3 {
   font-size: 3rem;
 }
 
+p{
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+a{
+  font-size: 2rem;
+  font-weight: bold;
+}
 .row {
   margin: 0;
 }
