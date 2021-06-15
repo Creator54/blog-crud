@@ -34,7 +34,7 @@ router.get("/post/:id",async(req,res)=>{
     }
 })
 
-router.patch("/post/:id",async(req,res)=>{
+router.get("/edit/:id",async(req,res)=>{
     try{
         const _id=req.params.id;
         const getPost=await Post.findByIdAndUpdate(_id,req.body,{new:true});
@@ -44,10 +44,11 @@ router.patch("/post/:id",async(req,res)=>{
     }
 })
 
-router.delete("/post/:id",async(req,res)=>{
+router.get("/delete/:id",async(req,res)=>{
     try{
-        const getPost=await Post.findByIdAndDelete(req.params.id);
-        res.send(getPost);
+        await Post.findByIdAndDelete(req.params.id);
+        res.render('gallery')
+        // res.send(getPost);
     }catch(e){
         res.status(500).send(e);
     }
