@@ -4,7 +4,7 @@ const app = express();
 const User = require("../models/post");
 
 // creating db
-mongoose.connect("mongodb://localhost:27017/blog-crud", {
+mongoose.connect("mongodb+srv://creator54:u4gmyE8zpQ2sdEq@cluster0.rzvyn.mongodb.net/blog-crud?retryWrites=true&w=majority", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
