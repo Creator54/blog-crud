@@ -49,7 +49,7 @@ router.post("/create-post/:id",async(req,res)=>{
 router.get("/delete/:id",async(req,res)=>{
     try{
         await Post.findByIdAndDelete(req.params.id);
-        res.status(201).render("post-success");
+        res.status(201).render("delete-success");
         // res.send(getPost);
     }catch(e){
         res.status(500).send(e);
