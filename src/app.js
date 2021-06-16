@@ -49,8 +49,13 @@ app.post("/contact",async(req,res)=>{
   try{
       // res.send(req.body)
       const userData=new User(req.body);
+      if(userData.name==""|| userData.email==""||userData.institute==""||userData.contact==""||userData.message=="")
+      {res.status(500).end("Error");}
+      else
+      {
       await userData.save();
       res.status(201).render("index");
+      }
   }catch(e){
       res.status(500).send(e);
   }
