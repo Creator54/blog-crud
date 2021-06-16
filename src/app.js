@@ -50,7 +50,7 @@ app.post("/contact",async(req,res)=>{
       // res.send(req.body)
       const userData=new User(req.body);
       if(userData.name==""|| userData.email==""||userData.institute==""||userData.contact==""||userData.message=="")
-      {res.status(500).end("Error");}
+      {res.status(500).render('emptyinput');}
       else
       {
       await userData.save();
