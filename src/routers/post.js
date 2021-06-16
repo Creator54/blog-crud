@@ -8,7 +8,7 @@ router.post("/create-post",async(req,res)=>{
         const addingPostRecords=new Post(req.body)
         // console.log(req.body);
         const insertPost=await addingPostRecords.save();
-        res.status(201).render('index');
+        res.status(201).render('delete-success');
     }catch(e){
         res.status(400).send(e);
     }
