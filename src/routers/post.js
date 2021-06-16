@@ -6,9 +6,9 @@ const Post=require("../models/post");
 router.post("/create-post",async(req,res)=>{
     try{
         const addingPostRecords=new Post(req.body)
-        // console.log(req.body); 
+        // console.log(req.body);
         if(addingPostRecords.postname =="" || addingPostRecords.category =="" || addingPostRecords.content =="" || addingPostRecords.conclusion ==""){
-            res.status(400).end(alert("Please fill all Fields Correctly!"));
+            res.status(201).render('emptyinput');
         }else{
         const insertPost=await addingPostRecords.save();
         res.status(201).render('delete-success');
