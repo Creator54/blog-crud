@@ -39,7 +39,7 @@ router.post("/create-post/:id",async(req,res)=>{
     try{
         const _id=req.params.id;
         const getPost=await Post.findByIdAndUpdate(_id,req.body,{new:true});
-        res.render('gallery');
+        res.status(201).render("post-success");
         // res.send(getPost);
     }catch(e){
         res.status(500).send(e);
@@ -49,7 +49,7 @@ router.post("/create-post/:id",async(req,res)=>{
 router.get("/delete/:id",async(req,res)=>{
     try{
         await Post.findByIdAndDelete(req.params.id);
-        res.status(201).render("index");
+        res.status(201).render("post-success");
         // res.send(getPost);
     }catch(e){
         res.status(500).send(e);
