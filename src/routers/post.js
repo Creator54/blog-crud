@@ -39,7 +39,7 @@ router.post("/create-post/:id",async(req,res)=>{
     try{
         const _id=req.params.id;
         const getPost=await Post.findByIdAndUpdate(_id,req.body,{new:true});
-        res.status(201).render("post-success");
+        res.status(201).render("delete-success");
         // res.send(getPost);
     }catch(e){
         res.status(500).send(e);
