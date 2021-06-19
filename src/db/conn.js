@@ -17,7 +17,3 @@ mongoose.connect("mongodb+srv://creator54:u4gmyE8zpQ2sdEq@cluster0.rzvyn.mongodb
     console.log("No connection");
   })
 
-  // User.find({},function(err,users){
-  //   if(err)console.log(err);
-  //   console.log(users)
-  // })
